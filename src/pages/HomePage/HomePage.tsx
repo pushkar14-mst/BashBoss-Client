@@ -1,15 +1,15 @@
 // import BestSellingEventsSection from "../../componets/BestSellingEventsSection/BestSellingEventsSection";
-import HeroSection from "../../componets/HeroSection/HeroSection";
-import Footer from "../../componets/UI/Footer/Footer";
-import Navbar from "../../componets/UI/Navbar/Navbar";
-import UpcomingEventsSection from "../../componets/UpcomingEventsSection/UpcomingEventsSection";
+import HeroSection from "../../components/HeroSection/HeroSection";
+import Footer from "../../components/UI/Footer/Footer";
+import Navbar from "../../components/UI/Navbar/Navbar";
+import UpcomingEventsSection from "../../components/UpcomingEventsSection/UpcomingEventsSection";
 import { useEffect, useState } from "react";
 import { loadingActions } from "../../store/loading-store";
 import { useDispatch } from "react-redux";
 import { IVenue } from "../../IVenue";
 import useApi from "../../hooks/apiHook";
-import LoadingModal from "../../componets/UI/Modal/LoadingModal";
-import BestSellingEventsSection from "../../componets/BestSellingEventsSection/BestSellingEventsSection";
+import LoadingModal from "../../components/UI/Modal/LoadingModal";
+import BestSellingEventsSection from "../../components/BestSellingEventsSection/BestSellingEventsSection";
 const HomePage = () => {
   const [events, setEvents] = useState([]);
   const [venues, setVenues] = useState<IVenue[]>([]);
@@ -20,7 +20,7 @@ const HomePage = () => {
       loadingActions.setLoading({
         isLoading: true,
         message: "",
-      })
+      }),
     );
     getAllEvents().then((res) => {
       setEvents(res);
@@ -36,7 +36,7 @@ const HomePage = () => {
         loadingActions.setLoading({
           isLoading: false,
           message: "",
-        })
+        }),
       );
   }, [events, venues]);
 

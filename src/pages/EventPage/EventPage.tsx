@@ -1,14 +1,14 @@
 import { useLocation, useNavigate } from "react-router";
-import Calendar from "../../componets/UI/Calendar/Calendar";
-import Navbar from "../../componets/UI/Navbar/Navbar";
+import Calendar from "../../components/UI/Calendar/Calendar";
+import Navbar from "../../components/UI/Navbar/Navbar";
 
 import "./EventPage.css";
 // import { events } from "../../dummyData";
 import { useDispatch, useSelector } from "react-redux";
-import ReviewsAccordian from "../../componets/ReviewsAccordian/ReviewsAccordian";
+import ReviewsAccordian from "../../components/ReviewsAccordian/ReviewsAccordian";
 import { useEffect, useState } from "react";
-import ReviewForm from "../../componets/ReviewForm/ReviewForm";
-import Footer from "../../componets/UI/Footer/Footer";
+import ReviewForm from "../../components/ReviewForm/ReviewForm";
+import Footer from "../../components/UI/Footer/Footer";
 import { IEvent } from "../../IEvent";
 import { IVenue } from "../../IVenue";
 import useApi from "../../hooks/apiHook";
@@ -23,10 +23,10 @@ const EventPage: React.FC = () => {
   const identifiedEvent = useLocation().state.event as IEventN;
   const identifiedVenue = useLocation().state.venue as IVenue;
   const bookedEvents = useSelector(
-    (state: any) => state.bookedEvents.bookedEvents
+    (state: any) => state.bookedEvents.bookedEvents,
   );
   const checkIfBooked = bookedEvents.find(
-    (event: any) => event.eventId === identifiedEvent.id
+    (event: any) => event.eventId === identifiedEvent.id,
   );
   console.log(checkIfBooked, bookedEvents);
 
@@ -94,7 +94,7 @@ const EventPage: React.FC = () => {
         eventLocation: `${identifiedVenue.street}, ${identifiedVenue.city}, ${identifiedVenue.state}, ${identifiedVenue.zipcode}`,
         eventTime: `${day} ${month} ${year}`,
         eventDate: `${day} ${month} ${year}`,
-      })
+      }),
     );
     // localStorage.setItem("activityId", identifiedEvent.id || "");
     createReservation({
@@ -137,10 +137,10 @@ const EventPage: React.FC = () => {
     const overallRating = sum / reviews.length;
     setOverallRating(overallRating);
     const outterMainCircle = document.querySelector(
-      ".main-rating-circle-outter"
+      ".main-rating-circle-outter",
     ) as HTMLDivElement;
     const innerMainCircle = document.querySelector(
-      ".main-rating-circle"
+      ".main-rating-circle",
     ) as HTMLDivElement;
     const percentage = ((overallRating - 1) / (5 - 1)) * 100;
     outterMainCircle.style.background = `conic-gradient(#6b6b6b ${percentage}%, #6b6b6b69 0%)`;

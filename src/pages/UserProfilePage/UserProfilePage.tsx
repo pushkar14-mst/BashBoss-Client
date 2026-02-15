@@ -1,15 +1,15 @@
 import { useLocation, useNavigate } from "react-router";
 import "./UserProfilePage.css";
-import Navbar from "../../componets/UI/Navbar/Navbar";
-import UserDashboard from "../../componets/UserDashboard/UserDashboard";
+import Navbar from "../../components/UI/Navbar/Navbar";
+import UserDashboard from "../../components/UserDashboard/UserDashboard";
 import { useEffect, useState } from "react";
-import UserProfile from "../../componets/UserProfile/UserProfile";
-import LoadingModal from "../../componets/UI/Modal/LoadingModal";
+import UserProfile from "../../components/UserProfile/UserProfile";
+import LoadingModal from "../../components/UI/Modal/LoadingModal";
 import { jwtDecode } from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";
 import { loadingActions } from "../../store/loading-store";
 import { googleUserActions } from "../../store/google-user-store";
-import BookedEvents from "../../componets/BookedEvents/BookedEvents";
+import BookedEvents from "../../components/BookedEvents/BookedEvents";
 import useApi from "../../hooks/apiHook";
 import {
   IBookedEvent,
@@ -66,7 +66,7 @@ const UserProfilePage: React.FC = () => {
 
       res.forEach((event: any) => {
         let identifiedVenue = venues.find(
-          (venue: any) => venue.id === event.venueId
+          (venue: any) => venue.id === event.venueId,
         );
         console.log(identifiedVenue);
 
@@ -113,7 +113,7 @@ const UserProfilePage: React.FC = () => {
       googleUserActions.setGoogleUser({
         name: googleUser.name,
         email: googleUser.email,
-      })
+      }),
     );
 
     // setGoogleUser(user);
@@ -121,7 +121,7 @@ const UserProfilePage: React.FC = () => {
       loadingActions.setLoading({
         isLoading: false,
         message: "",
-      })
+      }),
     );
   } else {
     googleUser = useSelector((state: any) => state.googleUser);
@@ -130,7 +130,7 @@ const UserProfilePage: React.FC = () => {
       loadingActions.setLoading({
         isLoading: false,
         message: "",
-      })
+      }),
     );
   }
 

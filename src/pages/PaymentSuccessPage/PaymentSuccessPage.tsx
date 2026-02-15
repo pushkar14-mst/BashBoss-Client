@@ -1,6 +1,6 @@
 // import { useNavigate } from "react-router";
 import successImg from "../../assets/Successful purchase-pana.png";
-import Footer from "../../componets/UI/Footer/Footer";
+import Footer from "../../components/UI/Footer/Footer";
 // import Navbar from "../../componets/UI/Navbar/Navbar";
 import { useDispatch } from "react-redux";
 import { resetRecentlyBookedEvent } from "../../store/booked-event-store";
@@ -80,7 +80,7 @@ const PaymentSuccessPage = () => {
             style={{ marginTop: "20px" }}
             onClick={() => {
               validateUserTokenForNormalUser(
-                localStorage.getItem("token") as string
+                localStorage.getItem("token") as string,
               );
             }}
           >

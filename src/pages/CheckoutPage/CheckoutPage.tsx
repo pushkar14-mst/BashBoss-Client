@@ -1,13 +1,13 @@
 import { StripeElementsOptionsMode, loadStripe } from "@stripe/stripe-js";
-import EventTicket from "../../componets/UI/EventTicket/EventTicket";
-import Footer from "../../componets/UI/Footer/Footer";
-import Navbar from "../../componets/UI/Navbar/Navbar";
+import EventTicket from "../../components/UI/EventTicket/EventTicket";
+import Footer from "../../components/UI/Footer/Footer";
+import Navbar from "../../components/UI/Navbar/Navbar";
 import "./CheckoutPage.css";
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "../../componets/CheckoutForm/CheckoutForm";
+import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import PaymentLoader from "../../componets/UI/PaymentLoader/PaymentLoader";
+import PaymentLoader from "../../components/UI/PaymentLoader/PaymentLoader";
 
 interface ICheckout {
   amount: number;

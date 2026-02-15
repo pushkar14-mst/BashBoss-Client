@@ -1,5 +1,5 @@
-import Navbar from "../../componets/UI/Navbar/Navbar";
-import Footer from "../../componets/UI/Footer/Footer";
+import Navbar from "../../components/UI/Navbar/Navbar";
+import Footer from "../../components/UI/Footer/Footer";
 import "./PasswordResetPage.css";
 import passwordResetImg from "../../assets/Reset password-cuate.png";
 import { useState } from "react";
@@ -58,7 +58,7 @@ const PasswordResetPage = () => {
                       loadingActions.setLoading({
                         isLoading: true,
                         message: "Verifying OTP",
-                      })
+                      }),
                     );
                     verifyOtp(username, otp).then(() => {
                       // setToken(res);
@@ -70,7 +70,7 @@ const PasswordResetPage = () => {
                       loadingActions.setLoading({
                         isLoading: false,
                         message: "",
-                      })
+                      }),
                     );
                   }}
                 >
@@ -110,14 +110,14 @@ const PasswordResetPage = () => {
                       loadingActions.setLoading({
                         isLoading: true,
                         message: "Sending OTP",
-                      })
+                      }),
                     );
                     sendOtp(username).then((res) => {
                       dispatch(
                         loadingActions.setLoading({
                           isLoading: false,
                           message: "",
-                        })
+                        }),
                       );
 
                       setIsEmailSent(true);

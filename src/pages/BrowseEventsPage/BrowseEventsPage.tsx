@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import EventGridCard from "../../componets/UI/EventGridCard/EventGridCard";
-import FilterBox from "../../componets/UI/FilterBox/FilterBox";
-import Navbar from "../../componets/UI/Navbar/Navbar";
+import EventGridCard from "../../components/UI/EventGridCard/EventGridCard";
+import FilterBox from "../../components/UI/FilterBox/FilterBox";
+import Navbar from "../../components/UI/Navbar/Navbar";
 import "./BrowseEventsPage.css";
 import { useEffect, useState } from "react";
-import Footer from "../../componets/UI/Footer/Footer";
+import Footer from "../../components/UI/Footer/Footer";
 import useApi from "../../hooks/apiHook";
 import { IVenue } from "../../IVenue";
-import LoadingModal from "../../componets/UI/Modal/LoadingModal";
+import LoadingModal from "../../components/UI/Modal/LoadingModal";
 import { loadingActions } from "../../store/loading-store";
 
 // import { events } from "../../dummyData";
@@ -77,7 +77,7 @@ const BrowseEventsPage = () => {
       loadingActions.setLoading({
         isLoading: true,
         message: "",
-      })
+      }),
     );
     getAllEvents().then((res) => {
       setEvents(res);
@@ -94,7 +94,7 @@ const BrowseEventsPage = () => {
         loadingActions.setLoading({
           isLoading: false,
           message: "",
-        })
+        }),
       );
   }, [events, venues]);
 
@@ -110,27 +110,29 @@ const BrowseEventsPage = () => {
     if (currentFilters.search !== "") {
       setFilteredEvents(
         events.filter((event: any) =>
-          event.name.toLowerCase().includes(currentFilters.search.toLowerCase())
-        )
+          event.name
+            .toLowerCase()
+            .includes(currentFilters.search.toLowerCase()),
+        ),
       );
     }
     if (currentFilters.categoryFilters.length > 0) {
       setFilteredEvents(
         events.filter((event: any) => {
           let venueName = venues.find(
-            (venue: any) => venue.id === event.venueId
+            (venue: any) => venue.id === event.venueId,
           )?.name;
           return currentFilters.categoryFilters.includes(venueName);
-        })
+        }),
       );
     }
     if (currentFilters.locationFilters.length > 0) {
       setFilteredEvents(
         events.filter((event: any) => {
           return currentFilters.locationFilters.includes(
-            venues.find((venue: any) => venue.id === event.venueId)?.city
+            venues.find((venue: any) => venue.id === event.venueId)?.city,
           );
-        })
+        }),
       );
     }
     if (currentFilters.dateFilters.length > 0) {
@@ -144,10 +146,10 @@ const BrowseEventsPage = () => {
               {
                 day: "numeric",
                 month: "long",
-              }
-            )
+              },
+            ),
           );
-        })
+        }),
       );
     }
   }, [currentFilters]);
@@ -184,7 +186,7 @@ const BrowseEventsPage = () => {
                   venueId={event.venueId}
                   event={event}
                   venue={venues.find(
-                    (venue: any) => venue.id === event.venueId
+                    (venue: any) => venue.id === event.venueId,
                   )}
                 />
               );

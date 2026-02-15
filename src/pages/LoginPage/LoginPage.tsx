@@ -1,11 +1,11 @@
-import Footer from "../../componets/UI/Footer/Footer";
-import Navbar from "../../componets/UI/Navbar/Navbar";
+import Footer from "../../components/UI/Footer/Footer";
+import Navbar from "../../components/UI/Navbar/Navbar";
 import signUpImg from "../../assets/signup-poster.png";
 import "./LoginPage.css";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import useApi from "../../hooks/apiHook";
-import LoadingModal from "../../componets/UI/Modal/LoadingModal";
+import LoadingModal from "../../components/UI/Modal/LoadingModal";
 import { useDispatch, useSelector } from "react-redux";
 import { loadingActions } from "../../store/loading-store";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -117,7 +117,7 @@ const LoginPage: React.FC = () => {
   const confirmPassword = () => {
     const password = document.getElementById("password") as HTMLInputElement;
     const confirmPassword = document.getElementById(
-      "confirm-password"
+      "confirm-password",
     ) as HTMLInputElement;
 
     if (
@@ -155,7 +155,7 @@ const LoginPage: React.FC = () => {
         loadingActions.setLoading({
           isLoading: true,
           message: "Registering you to our database...",
-        })
+        }),
       );
       await register(data);
     } else {
@@ -164,10 +164,10 @@ const LoginPage: React.FC = () => {
   };
   const handleLogin = async () => {
     const username = document.getElementById(
-      "login-username"
+      "login-username",
     ) as HTMLInputElement;
     const password = document.getElementById(
-      "login-password"
+      "login-password",
     ) as HTMLInputElement;
     const role = document.getElementById("login-role") as HTMLSelectElement;
     const data = {
@@ -180,7 +180,7 @@ const LoginPage: React.FC = () => {
         loadingActions.setLoading({
           isLoading: true,
           message: "Logging you in...",
-        })
+        }),
       );
       await login(data);
       username.value = "";

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import Footer from "../../componets/UI/Footer/Footer";
-import Navbar from "../../componets/UI/Navbar/Navbar";
+import Footer from "../../components/UI/Footer/Footer";
+import Navbar from "../../components/UI/Navbar/Navbar";
 import "./EventsNearMePage.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
@@ -55,7 +55,7 @@ const EventsNearMePage = () => {
     lat1: number,
     lon1: number,
     lat2: number,
-    lon2: number
+    lon2: number,
   ) => {
     const R = 6371e3; // Earth radius in meters
     const φ1 = (lat1 * Math.PI) / 180; // φ, λ in radians
@@ -107,7 +107,7 @@ const EventsNearMePage = () => {
           enableHighAccuracy: true,
         },
         trackUserLocation: true,
-      })
+      }),
     );
   }, [center]);
   useEffect(() => {
@@ -143,7 +143,7 @@ const EventsNearMePage = () => {
           coord.lat,
           coord.lng,
           center.lat,
-          center.lng
+          center.lng,
         );
 
         if (eventLocation === coord.location && distance < radius) {
@@ -158,7 +158,7 @@ const EventsNearMePage = () => {
     });
 
     const newNearbyEvents = Array.from(uniqueNearbyEvents).map(
-      (eventString: any) => JSON.parse(eventString)
+      (eventString: any) => JSON.parse(eventString),
     );
 
     setNearbyEvents(newNearbyEvents);
@@ -181,7 +181,7 @@ const EventsNearMePage = () => {
         let radius = 50;
         let distance = Math.sqrt(
           Math.pow(coord.lat - center.lat, 2) +
-            Math.pow(coord.lng - center.lng, 2)
+            Math.pow(coord.lng - center.lng, 2),
         );
         return distance < radius;
       })

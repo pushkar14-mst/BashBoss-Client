@@ -1,12 +1,12 @@
 import { useLocation, useNavigate } from "react-router";
-import Footer from "../../componets/UI/Footer/Footer";
-import Navbar from "../../componets/UI/Navbar/Navbar";
+import Footer from "../../components/UI/Footer/Footer";
+import Navbar from "../../components/UI/Navbar/Navbar";
 import "./ManageEventPage.css";
 
-import Chat from "../../componets/Chat/Chat";
+import Chat from "../../components/Chat/Chat";
 import { useSelector } from "react-redux";
 import useApi from "../../hooks/apiHook";
-import GroupChat from "../../componets/Chat/GroupChat";
+import GroupChat from "../../components/Chat/GroupChat";
 import { useState } from "react";
 
 const ManageEventPage: React.FC = () => {
@@ -22,7 +22,7 @@ const ManageEventPage: React.FC = () => {
   console.log("normalUser", normalUser);
 
   const allBookedEvents = useSelector(
-    (state: any) => state.bookedEvents.bookedEvents
+    (state: any) => state.bookedEvents.bookedEvents,
   );
   const bookedEventId = location.state.bookedEventId;
   // console.log(allBookedEvents);
@@ -33,14 +33,14 @@ const ManageEventPage: React.FC = () => {
     localStorage.removeItem("reservationId");
   };
   const bookedEvent = allBookedEvents.find(
-    (event: any) => event.eventId === bookedEventId
+    (event: any) => event.eventId === bookedEventId,
   );
   console.log(bookedEvent);
   const { changeReservationStatus, inviteFriends } = useApi();
 
   const onCancelEvent = () => {
     const confirmCancel = window.confirm(
-      "Are you sure you want to cancel this event?"
+      "Are you sure you want to cancel this event?",
     );
     if (confirmCancel) {
       changeReservationStatus("cancelled");
